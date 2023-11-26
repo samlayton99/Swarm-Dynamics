@@ -1,3 +1,3 @@
 # all-the-buzz
 
-yeet the child
+We model the motion of agents positioned in a 2-D plane with several attracting forces. For example, we model the flight of bumblebees through a field of flowers. Our model is inspired by the inverse-square law seen in classical mechanics, particularly with gravity. The bee's flight is influenced by attraction to flowers in the field. The attractive force of each flower is proportional to the bee's distance from a flower and its preferences for various attributes of the flower, like color, size, amount of pollen, etc. Thus the path of a bee depends on its starting position, the location of the flowers, and how closely the attributes of each flower match its preferences.
