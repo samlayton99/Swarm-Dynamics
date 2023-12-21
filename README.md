@@ -1,3 +1,3 @@
 # Corresponding Project
 
-[Click here to view the PDF](./model.pdf)
+[Click here to view the PDF](model.pdf)
