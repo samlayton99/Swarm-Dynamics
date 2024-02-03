@@ -27,7 +27,7 @@ We note that bees do not zoom exponentially fast towards flowers that catch thei
 
 $$\tag{1} G(\mathbf{x}_b,\mathbf{p}_f) = \frac{\alpha \mathbf{p}_f}{\| \mathbf{x}_f - \mathbf{x}_b \|^2}$$
 
-$$\tag{2} \dot{x_k}  = \frac{\mathbf{v}_{max}}{1+e^{-G(\mathbf{x}_b,\mathbf{p}_f)}} \frac{\mathbf{x}_f-\mathbf{x}_b}{\| \mathbf{x}_f - \mathbf{x}_b \|}$$
+$$\tag{2} \dot{\mathbf{x_k}}  = \frac{\mathbf{v}_{max}}{1+e^{-G(\mathbf{x}_b,\mathbf{p}_f)}} \frac{\mathbf{x}_f-\mathbf{x}_b}{\| \mathbf{x}_f - \mathbf{x}_b \|}$$
 
 This formulation incorporates the dynamics of attraction based on proximity and preference, analogous to the gravitational attraction influenced by mass and distance.
 
@@ -44,7 +44,7 @@ Second, to eliminate the "decision paralysis" effect that we observed in the ini
 
 These two changes together led to the following updated differential equation for position:
 
-$$\tag{3} \dot{x_b} = \sum_{\text{F in field}} \left( (1_{p_f = \text{max } p}) \frac{v_{max}}{1+e^{-G(x_b,p_f)}} \frac{x_f-x_b}{\|x_f - x_b\|} \right) + A \dot{x}_{b(\text{prev})} \sin(\omega t)$$
+$$\tag{3} \dot{\mathbf{x_b}} = \sum_{\text{F in field}} \left( (\mathbb{1_{\mathbf{p_f} = \text{max } \mathbf{p}}}) \frac{\mathbf{v_{max}}}{1+e^{-G(\mathbf{x_b},\mathbf{p_f})}} \frac{\mathbf{x_f}-\mathbf{x_b}}{\|\mathbf{x_f}-\mathbf{x_b}\|} \right) + A \dot{\mathbf{x}}_{b(\text{prev})} \sin(\omega t)$$
 
 where $A$ and $\omega$ are parameters governing the amplitude and frequency of the zag motion, respectively. The results of this intermediate model produced significantly improved models of bee flight toward an attracting flower, as illustrated in the figure below.
 
