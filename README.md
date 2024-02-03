@@ -33,8 +33,8 @@ $$\tag{2} \dot{x_k}  = \frac{\mathbf{v}_{max}}{1+e^{-G(\mathbf{x}_b,\mathbf{p}_f
 This formulation incorporates the dynamics of attraction based on proximity and preference, analogous to the gravitational attraction influenced by mass and distance.
 
 <p align="center">
-  <img src="single_attractor.png" alt="Single Attractor" width="500"/>
-  <img src="equal_attractors.png" alt="Equal Attractors" width="500"/> 
+  <img src="single_attractor.png" alt="Single Attractor" width="400"/>
+  <img src="equal_attractors.png" alt="Equal Attractors" width="400"/> 
 </p>
 
 
