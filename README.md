@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="bee_flights.gif" alt="Bee Flights" width="600"/>
+  <img src="media/bee_flights.gif" alt="Bee Flights" width="600"/>
 </p>
 
 
@@ -33,8 +33,8 @@ $$\tag{2} \dot{x_k}  = \frac{\mathbf{v}_{max}}{1+e^{-G(\mathbf{x}_b,\mathbf{p}_f
 This formulation incorporates the dynamics of attraction based on proximity and preference, analogous to the gravitational attraction influenced by mass and distance.
 
 <p align="center">
-  <img src="single_attractor.png" alt="Single Attractor" width="400"/>
-  <img src="equal_attractors.png" alt="Equal Attractors" width="400"/> 
+  <img src="media/single_attractor.png" alt="Single Attractor" width="400"/>
+  <img src="media/equal_attractors.png" alt="Equal Attractors" width="400"/> 
 </p>
 
 
@@ -52,7 +52,7 @@ $$\tag{3} \dot{x_b} = \sum_{\text{F in field}} \left( (1_{p_f = \text{max } p}) 
 where $A$ and $\omega$ are parameters governing the amplitude and frequency of the zag motion, respectively. The results of this intermediate model produced significantly improved models of bee flight toward an attracting flower, as illustrated in the figure below.
 
 <p align="center">
-  <img src="buzz_selection.png" alt="Buzz Selection" width="500"/>
+  <img src="media/buzz_selection.png" alt="Buzz Selection" width="500"/>
 </p>
 
 ### Final Model Specifications
@@ -104,7 +104,7 @@ The memory indicator $\gamma_i(x_k, t)$, given by Equation 6, determines whether
 This comprehensive framework integrates behavioral and environmental factors to provide a nuanced understanding of bee movement. The equations consider not only the physical dynamics of flight, but also incorporate behavioral elements such as memory and preference, offering a detailed insight into the navigation patterns of bees.
 
 
-### Results
+## Results
 
 With the model specifications above, we find that with sufficient parameter tuning, we obtain a highly effective dynamic model of bee movement over time. Given the parameters
 
@@ -116,7 +116,7 @@ With the model specifications above, we find that with sufficient parameter tuni
 along with the random placement of flowers through the field, initial starting positions of bees along the bottom of the grid, and the beehive situated directly at the top, we obtain the figure shown below.
 
 <p align="center">
-  <img src="bees_to_the_top.png" alt="Bees to the Top" width="700"/>
+  <img src="media/bees_to_the_top.png" alt="Bees to the Top" width="700"/>
 </p>
 
 As evidenced by the figure, bees starting at the bottom of the field move from flower to flower, seemingly distracted as they eventually make their way to their original goal of the beehive. Observing the simultaneous evolution of the bees' trajectories demonstrates the primary intent of our model.
@@ -124,7 +124,7 @@ As evidenced by the figure, bees starting at the bottom of the field move from f
 Further exploration of the model can be done by exploring vector fields of the attraction force on a particular bee. Given that different preference vectors of bees and flowers alike will result in different vector fields, we randomly construct a single field with varying flower preferences. Our vector field proves particularly useful in uncovering the behavior of our bees after a specific flower has already been visited and highlights the discontinuous change in the bee's trajectory. These vector fields are shown in the figure below.
 
 <p align="center">
-  <img src="vector_field_side_by_side.png" alt="Vector Field Side by Side" width="700"/>
+  <img src="media/vector_field_side_by_side.png" alt="Vector Field Side by Side" width="700"/>
 </p>
 
 This vector field also highlights how the attractors prevent our bee from progressing to its original goal. These distractions may form trapping regions, as seen by the whitespace in the vector fields. Once the attractors are visited, these trapping regions disappear, allowing the agent to progress towards its original goal once more.
@@ -132,10 +132,10 @@ This vector field also highlights how the attractors prevent our bee from progre
 Changing parameters affects the path the bees follow. In particular, we can tune the trajectory of the bees to visit more or less flowers by changing the parameters governing the Gaussian distance function. The figure below demonstrates how, by increasing the parameter $\alpha$ by 10-fold, we can narrow the radius of attraction, forcing the bees to ignore flowers further away.
 
 <p align="center">
-  <img src="alpha_tuning.png" alt="Alpha Tuning" width="700"/>
+  <img src="media/alpha_tuning.png" alt="Alpha Tuning" width="700"/>
 </p>
 
-### Analysis/Conclusions
+## Analysis/Conclusions
 
 The techniques employed in modeling the flight patterns of bumblebees navigating a field of attractors were well-suited to capture the essence of the chosen phenomenon. Our group's approach effectively simulated the nuanced dynamics of agent motion amidst multiple enticing destinations. However, with more time and resources, several avenues for refining the model could have been explored, potentially enhancing its accuracy and applicability.
 
