@@ -11,7 +11,6 @@
 
 We model the motion of agents navigating towards a target destination in the face of distracting attractors. Specifically, in this paper we model the flight of bumblebees returning to their hive through a field of flowers. Our resulting model is a first-order dynamical system of independent agents as they face distractions against a primary objective. This research fits into a larger body of work focused on the study of animal movement and migration, typically modeled using stochastic or partial differential equations. Our research is unique in its simulation and treatment of distractions along the path of motion. The implications of this work are not only relevant to animal movement, but also contain potential applications to behavioral economic models.
 
-
 ## Background/Motivation
 
 The goal of this model is to explain the behavior of free agents progressing toward a destination while navigating through a field of various distractions. We chose to model the flight of bees on their way back to a hive (the destination) through a field of flowers (the distractions). We began deriving our model using principles from gravity, where attraction to any destination or distraction was influenced by both proximity (distance) and preferences (a proxy for mass).
@@ -37,7 +36,6 @@ This formulation incorporates the dynamics of attraction based on proximity and 
   <img src="media/equal_attractors.png" alt="Equal Attractors" width="400"/> 
 </p>
 
-
 ### Intermediate Model
 
 Taking into account the unrealistic linear motion and non-flower equilibrium discovered in the previous model, we updated our model in two important ways. First, to produce movement more characteristic of a bee's flight observed in nature, we introduced a zagging motion to the bee's trajectory. We did so by adding a perturbation to the bee's trajectory in the form of a sine wave perpendicular to the direction of the bee's given velocity as a function of time.
@@ -47,7 +45,6 @@ Second, to eliminate the "decision paralysis" effect that we observed in the ini
 These two changes together led to the following updated differential equation for position:
 
 $$\tag{3} \dot{x_b} = \sum_{\text{F in field}} \left( (1_{p_f = \text{max } p}) \frac{v_{max}}{1+e^{-G(x_b,p_f)}} \frac{x_f-x_b}{\|x_f - x_b\|} \right) + A \dot{x}_{b(\text{prev})} \sin(\omega t)$$
-
 
 where $A$ and $\omega$ are parameters governing the amplitude and frequency of the zag motion, respectively. The results of this intermediate model produced significantly improved models of bee flight toward an attracting flower, as illustrated in the figure below.
 
@@ -77,7 +74,6 @@ The parameters and equations governing motion in this updated model are listed i
 | $V$ | Max speed |
 | $\xi$ | Flight acceleration factor |
 
-
 In what follows, $n$ is the total number of attractors, while $K$ is the total number of bees. The model presented herein simulates bee movement, focusing on the interaction between bees and flowers. The key variable, $x_k \in \mathbb{R}^2$, represents the bee's position. The model integrates various environmental parameters as detailed in the table above in order to describe the complex dynamics of bee navigation as follows:
 
 $$\tag{4} G_i(x_k,p_k) = \left(e^{-\alpha\|f_i - x_k\|^2} + b\right) \left(\frac{1}{1 + \|q_i - p_k\|^2}\right)\left(\frac{f_i - x_k}{\|f_i - x_k\|}\right)$$
@@ -93,7 +89,6 @@ $$\tag{8} G = [G_1, G_2, \ldots, G_n]^{T}$$
 $$\tag{9} \dot{x_k} = V \frac{\gamma^{T} G + B}{\xi + \|\gamma^{T} G + B\|}$$
 
 The attraction of bee $k$ to flower $i$ is modeled by $G_i(x_k, p_k)$, as defined in Equation 4. This function of the bee's position and preferences comprises a Gaussian-like vision factor, a preference-matching component, and a unit vector in the direction of the flower. We also factor in a persistent pull towards the hive, as given by $B(x_k, t)$ in Equation 5. For this equation, the indicator is activated when the sum of the $G_i$ is greater than one, the middle expression represents an attraction to the hive that grows over time, and finally a unit direction of attraction. It can be shown that 
-
 
 $$\tag{10} ||\gamma^TG|| \leq n$$
 
@@ -154,4 +149,3 @@ In its current form the model offers valuable insights into various real-world s
 #### Learning and Future Directions
 
 In addition to exploring the impact of differential preferences and environmental factors on agent behavior, future iterations of our model could investigate the role of collective decision-making processes in bee movement and flower selection. Understanding how bees communicate and influence each other's navigational choices could offer deeper insights into swarm intelligence and its applications in optimizing networked systems and algorithms. Additionally, simulating varying environmental conditions, such as changing weather patterns or the introduction of predators, could provide a more nuanced view of animal behavior in dynamic landscapes.
-
