@@ -25,9 +25,13 @@ As a starting point for modeling the attraction of bees to flowers in a field, w
 
 We note that bees do not zoom exponentially fast towards flowers that catch their attention, thus it was not realistic for the force of attraction to decrease as a function of distance. Observing that bees in nature often achieve a maximum flight velocity that they maintain throughout their travel, we decided to model a particular flower's effect on bee velocity using a logistic function, so that its velocity would be bounded between 0 and some $\mathbf{v}_{max}$. We thus modified the gravitational model to derive the following model of bee position $\mathbf{x_b}$ as a function of the preference correspondence, $\mathbf{p_f}$ and the position $\mathbf{x_f}$ of the attracting flower:
 
-$$\tag{1} G(\mathbf{x}_b,\mathbf{p}_f) = \frac{\alpha \mathbf{p}_f}{\| \mathbf{x}_f - \mathbf{x}_b \|^2}$$
+```math
+G(\mathbf{x}_b,\mathbf{p}_f) = \frac{\alpha \mathbf{p}_f}{\| \mathbf{x}_f - \mathbf{x}_b \|^2}
+```
 
-$$\tag{2} \dot{\mathbf{x_k}}  = \frac{\mathbf{v}_{max}}{1+e^{-G(\mathbf{x}_b,\mathbf{p}_f)}} \frac{\mathbf{x}_f-\mathbf{x}_b}{\| \mathbf{x}_f - \mathbf{x}_b \|}$$
+```math
+\dot{\mathbf{x_k}}  = \frac{\mathbf{v}_{max}}{1+e^{-G(\mathbf{x}_b,\mathbf{p}_f)}} \frac{\mathbf{x}_f-\mathbf{x}_b}{\| \mathbf{x}_f - \mathbf{x}_b \|}
+```
 
 This formulation incorporates the dynamics of attraction based on proximity and preference, analogous to the gravitational attraction influenced by mass and distance.
 
@@ -44,7 +48,9 @@ Second, to eliminate the "decision paralysis" effect that we observed in the ini
 
 These two changes together led to the following updated differential equation for position:
 
-$$\tag{3} \dot{\mathbf{x_b}} = \sum_{\text{F in field}} \left( (\mathbb{1_{\mathbf{p_f} = \text{max } \mathbf{p}}}) \frac{\mathbf{v_{max}}}{1+e^{-G(\mathbf{x_b},\mathbf{p_f})}} \frac{\mathbf{x_f}-\mathbf{x_b}}{\|\mathbf{x_f}-\mathbf{x_b}\|} \right) + A \dot{\mathbf{x}}_{b(\text{prev})} \sin(\omega t)$$
+```math
+\dot{\mathbf{x_b}} = \sum_{\text{F in field}} \left( (\mathbb{1_{\mathbf{p_f} = \text{max } \mathbf{p}}}) \frac{\mathbf{v_{max}}}{1+e^{-G(\mathbf{x_b},\mathbf{p_f})}} \frac{\mathbf{x_f}-\mathbf{x_b}}{\|\mathbf{x_f}-\mathbf{x_b}\|} \right) + A \dot{\mathbf{x}}_{b(\text{prev})} \sin(\omega t)
+```
 
 where $A$ and $\omega$ are parameters governing the amplitude and frequency of the zag motion, respectively. The results of this intermediate model produced significantly improved models of bee flight toward an attracting flower, as illustrated in the figure below.
 
@@ -76,21 +82,35 @@ The parameters and equations governing motion in this updated model are listed i
 
 In what follows, $n$ is the total number of attractors, while $K$ is the total number of bees. The model presented herein simulates bee movement, focusing on the interaction between bees and flowers. The key variable, $x_k \in \mathbb{R}^2$, represents the bee's position. The model integrates various environmental parameters as detailed in the table above in order to describe the complex dynamics of bee navigation as follows:
 
-$$\tag{4} G_i(x_k,p_k) = \left(e^{-\alpha\|f_i - x_k\|^2} + b\right) \left(\frac{1}{1 + \|q_i - p_k\|^2}\right)\left(\frac{f_i - x_k}{\|f_i - x_k\|}\right)$$
+```math
+G_i(x_k,p_k) = \left(e^{-\alpha\|f_i - x_k\|^2} + b\right) \left(\frac{1}{1 + \|q_i - p_k\|^2}\right)\left(\frac{f_i - x_k}{\|f_i - x_k\|}\right)
+```
 
-$$\tag{5} B(x_k,t) = \mathbb{1}(G_{1, \dots, n})\left(\frac{t}{1+\|h - x_k\|}\right)\left(\frac{h - x_k}{\|h - x_k\|}\right)$$
+```math
+B(x_k,t) = \mathbb{1}(G_{1, \dots, n})\left(\frac{t}{1+\|h - x_k\|}\right)\left(\frac{h - x_k}{\|h - x_k\|}\right)
+```
 
-$$\tag{6} \gamma_i(x_k,t) = \mathbb{1}_{[f_i, T_i]}(x_k,t)$$
+```math
+\gamma_i(x_k,t) = \mathbb{1}_{[f_i, T_i]}(x_k,t)
+```
 
-$$\tag{7} \gamma^{T} = [\gamma_1, \gamma_2, \ldots, \gamma_n]$$
+```math
+\gamma^{T} = [\gamma_1, \gamma_2, \ldots, \gamma_n]
+```
 
-$$\tag{8} G = [G_1, G_2, \ldots, G_n]^{T}$$
+```math
+G = [G_1, G_2, \ldots, G_n]^{T}
+```
 
-$$\tag{9} \dot{x_k} = V \frac{\gamma^{T} G + B}{\xi + \|\gamma^{T} G + B\|}$$
+```math
+\dot{x_k} = V \frac{\gamma^{T} G + B}{\xi + \|\gamma^{T} G + B\|}
+```
 
 The attraction of bee $k$ to flower $i$ is modeled by $G_i(x_k, p_k)$, as defined in Equation 4. This function of the bee's position and preferences comprises a Gaussian-like vision factor, a preference-matching component, and a unit vector in the direction of the flower. We also factor in a persistent pull towards the hive, as given by $B(x_k, t)$ in Equation 5. For this equation, the indicator is activated when the sum of the $G_i$ is greater than one, the middle expression represents an attraction to the hive that grows over time, and finally a unit direction of attraction. It can be shown that 
 
-$$\tag{10} ||\gamma^TG|| \leq n$$
+```math
+||\gamma^TG|| \leq n
+```
 
 which provides an upper bound on the norm of the attractors. This ensures the bees will eventually be more attracted to the hive than the other attractors combined. 
 
